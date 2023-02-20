@@ -1,48 +1,61 @@
 [
   {
     "Id": 1,
+    "ProductType": 1,
     "Name": "Big Pizza",
     "Type": "Pizza",
-    "Price": 25
+    "Price": 25,
+    "Image": "prop-1"
   },
   {
     "Id": 2,
+    "ProductType": 1,
     "Name": "Small Pizza",
     "Type": "Pizza",
-    "Price": 15
+    "Price": 15,
+    "Image": "prop-2"
   },
   {
     "Id": 3,
+    "ProductType": 1,
     "Name": "Medium Pizza",
     "Type": "Pizza",
-    "Price": 20
+    "Price": 20,
+    "Image": "prop-3"
   },
   {
     "Id": 4,
+    "ProductType": 1,
     "Name": "Mega Pizza",
     "Type": "Pizza",
-    "Price": 40
+    "Price": 40,
+    "Image": "prop-4"
   },
   {
     "Id": 5,
+    "ProductType": 1,
     "Name": "Lemonade",
     "Type": "Drink",
     "Price": 20
   },
   {
     "Id": 6,
-    "Name": "Beer",
-    "Type": "Drink",
-    "Price": 15
+    "ProductType": 2,
+    "Name": "Snapback Merch",
+    "Type": "Clothes",
+    "Price": 15,
+    "Image": "prop-6"
   },
   {
     "Id": 7,
+    "ProductType": 1,
     "Name": "Sprite",
     "Type": "Drink",
     "Price": 10
   },
   {
     "Id": 8,
+    "ProductType": 1,
     "Name": "Coca-cola",
     "Type": "Drink",
     "Price": 10

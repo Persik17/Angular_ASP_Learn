@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-img-wrapper">
-    <img calss="card-img-top" src="./assets/images/pizza-template.jpg" />
+    <img *ngIf="property.Image" calss="card-img-top" src="./assets/images/{{property.Image}}.jpg" />
+    <img *ngIf="!property.Image" calss="card-img-top" src="./assets/images/pizza-template.jpg" />
     <ul class="list-inline text-center member-icons animate">
       <li class="list-inline-item">
         <button class="btn btn-primary" routerLink="/property-detail/{{property.Id}}"><i class="fa-sharp fa-solid fa-gear"></i></button>

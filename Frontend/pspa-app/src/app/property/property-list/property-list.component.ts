@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { ProductService } from 'src/app/service/product.service';
 import { IProperty } from '../IProperty.interface';
@@ -9,12 +10,20 @@ import { IProperty } from '../IProperty.interface';
   styleUrls: ['./property-list.component.css'],
 })
 export class PropertyListComponent implements OnInit {
-  /*   properties: Array<IProperty> | undefined;*/
-  properties: any;
-  constructor(private productService: ProductService) {}
+  ProductType = 1;
+  properties!: Array<IProperty>;
+
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-    this.productService.getAllProperties().subscribe(
+    if (this.route.snapshot.url.toString()) {
+      this.ProductType = 2; //on march-property url
+    }
+
+    this.productService.getAllProperties(this.ProductType).subscribe(
       (data) => {
         this.properties = data;
         console.log(data);
