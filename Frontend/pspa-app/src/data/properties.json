@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1,
+    "Name": "Big Pizza",
+    "Type": "Pizza",
+    "Price": 25
+  },
+  {
+    "Id": 2,
+    "Name": "Small Pizza",
+    "Type": "Pizza",
+    "Price": 15
+  },
+  {
+    "Id": 3,
+    "Name": "Medium Pizza",
+    "Type": "Pizza",
+    "Price": 20
+  },
+  {
+    "Id": 4,
+    "Name": "Mega Pizza",
+    "Type": "Pizza",
+    "Price": 40
+  },
+  {
+    "Id": 5,
+    "Name": "Lemonade",
+    "Type": "Drink",
+    "Price": 20
+  },
+  {
+    "Id": 6,
+    "Name": "Beer",
+    "Type": "Drink",
+    "Price": 15
+  },
+  {
+    "Id": 7,
+    "Name": "Sprite",
+    "Type": "Drink",
+    "Price": 10
+  },
+  {
+    "Id": 8,
+    "Name": "Coca-cola",
+    "Type": "Drink",
+    "Price": 10
+  }
+]
