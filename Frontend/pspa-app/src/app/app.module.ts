@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppComponent }   from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { Routes, RouterModule } from '@angular/router';
@@ -11,12 +11,18 @@ import { AddPropertyComponent } from './property/add-property/add-property.compo
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+
 import { ProductService } from './service/product.service';
+
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 
 const appRoutes: Routes = [
   {path: '', component: PropertyListComponent},
   {path: 'add-property', component: AddPropertyComponent},
   {path: 'property-detail/:id', component: PropertyDetailComponent},
+  {path: 'user/login', component: UserLoginComponent},
+  {path: 'user/register', component: UserRegisterComponent},
   {path: '**', component: PropertyListComponent},
 ]
 
@@ -27,11 +33,14 @@ const appRoutes: Routes = [
     PropertyListComponent,
     NavBarComponent,
     AddPropertyComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    UserLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
