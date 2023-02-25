@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AddPropertyComponent implements OnInit {
   @ViewChild('Form') addPropertyForm!: NgForm;
+
   constructor(private router: Router) {}
 
   ngOnInit() {}

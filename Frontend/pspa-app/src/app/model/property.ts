@@ -1,4 +1,4 @@
-export interface IProperty {
+export interface Property {
   Id: number;
   ProductType: number;
   Name: string;

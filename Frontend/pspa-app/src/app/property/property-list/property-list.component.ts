@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductService } from 'src/app/service/product.service';
-import { IProperty } from '../IProperty.interface';
+import { Property } from '../../model/property';
 
 @Component({
   selector: 'app-property-list',
@@ -11,7 +11,7 @@ import { IProperty } from '../IProperty.interface';
 })
 export class PropertyListComponent implements OnInit {
   ProductType = 1;
-  properties!: Array<IProperty>;
+  properties!: Array<Property>;
 
   constructor(
     private route: ActivatedRoute,

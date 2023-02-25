@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
+
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-user-register',
@@ -8,22 +16,27 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class UserRegisterComponent implements OnInit {
   registrationFrom: FormGroup;
+  user: User;
+  userSubmitted: boolean;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService : UserService) {}
 
   ngOnInit() {
     this.createRegisterationForm();
   }
 
   createRegisterationForm() {
-    this.registrationFrom =  this.fb.group({
+    this.registrationFrom = this.fb.group(
+      {
         userName: [null, Validators.required],
         email: [null, [Validators.required, Validators.email]],
         password: [null, [Validators.required, Validators.minLength(8)]],
         confirmPassword: [null, Validators.required],
-        mobile: [null, [Validators.required, Validators.maxLength(10)]]
-    }, {validators: this.passwordMatchingValidator});
-}
+        mobile: [null, [Validators.required, Validators.maxLength(10)]],
+      },
+      { validators: this.passwordMatchingValidator }
+    );
+  }
 
   passwordMatchingValidator(fg: FormGroup): Validators {
     return fg.get('password')?.value == fg.get('confirmPassword')?.value
@@ -52,6 +65,11 @@ export class UserRegisterComponent implements OnInit {
   //--------------------------------
 
   onSubmit() {
-    console.log(this.registrationFrom);
+    console.log(this.registrationFrom.value);
+    this.userSubmitted = true;
+    /* this.userService.addUser(this.user); */
+    this.registrationFrom.reset();
+    this.userSubmitted = false;
   }
+
 }
