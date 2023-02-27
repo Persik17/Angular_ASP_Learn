@@ -13,6 +13,8 @@ import { PropertyDetailComponent } from './property/property-detail/property-det
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { ProductService } from './service/product.service';
+import { UserService } from './service/user.service';
+import { AlertifyService } from './service/alertify.service';
 
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
@@ -45,7 +47,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    ProductService
+    ProductService,
+    UserService,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })

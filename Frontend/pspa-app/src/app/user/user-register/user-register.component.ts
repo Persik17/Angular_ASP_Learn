@@ -8,6 +8,7 @@ import {
 
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
+import { AlertifyService } from 'src/app/service/alertify.service';
 
 @Component({
   selector: 'app-user-register',
@@ -19,7 +20,11 @@ export class UserRegisterComponent implements OnInit {
   user: User;
   userSubmitted: boolean;
 
-  constructor(private fb: FormBuilder, private userService : UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private alertifyService: AlertifyService
+  ) {}
 
   ngOnInit() {
     this.createRegisterationForm();
@@ -66,10 +71,15 @@ export class UserRegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registrationFrom.value);
-    this.userSubmitted = true;
-    /* this.userService.addUser(this.user); */
-    this.registrationFrom.reset();
-    this.userSubmitted = false;
-  }
+    if (this.registrationFrom.valid) {
+      this.userSubmitted = true;
+      /* this.userService.addUser(this.user); */
+      this.registrationFrom.reset();
+      this.userSubmitted = false;
+      this.alertifyService.success('Congrats, you are successfully registered');
+    } else {
+      this.alertifyService.error('Kindly provide the required fields');
+    }
 
+  }
 }
