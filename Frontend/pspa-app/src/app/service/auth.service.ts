@@ -5,21 +5,17 @@ import { User } from '../model/user';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
-  user: User;
-
+export class AuthService {
   constructor() {}
 
   //need remake after adding API
-  addUser(userReg: User) {
+  authUser(user: User) {
     let users = [];
     if (localStorage.getItem('Users')) {
       users = JSON.parse(localStorage.getItem('Users'));
-      users = [userReg, ...Object.values(users)];
-    } else {
-      users = [userReg];
     }
-
-    localStorage.setItem('Users', JSON.stringify(users));
+    return users.find(
+      (x: User) => x.userName === user.userName && x.password === user.password
+    );
   }
 }

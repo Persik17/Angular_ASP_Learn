@@ -43,7 +43,7 @@
       </ul>
       <div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li *ngIf="!loggedIn()" class="nav-item">
             <a
               routerLink="user/register"
               routerLinkActive="active"
@@ -51,7 +51,7 @@
               >Regiter</a
             >
           </li>
-          <li class="nav-item">
+          <li *ngIf="!loggedIn()" class="nav-item">
             <a
               routerLink="user/login"
               routerLinkActive="active"
@@ -59,6 +59,38 @@
               >Login</a
             >
           </li>
+
+          <span *ngIf="loggedIn()" dropdown>
+            <a
+              href="#"
+              class="dropdown-toggle text-light"
+              dropdownToggle
+              (click)="(false)"
+              >Welcome, {{ loggedInUser }}!</a
+            >
+            <ul
+              id="basic-link-dropdown"
+              *dropdownMenu
+              class="dropdown-menu dropdown-menu-end"
+              role="menu"
+              aria-labelledby="basic-link"
+            >
+              <li>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-tachometer-alt"></i> View Dashboard</a
+                >
+                <a href="#" class="dropdown-item">
+                  <i class="far fa-user-circle"></i> My Profile</a
+                >
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-key"></i> Change Password</a
+                >
+                <a (click)="onLogout()" class="dropdown-item">
+                  <i class="fas fa-sign-out-alt"></i> Logout</a
+                >
+              </li>
+            </ul>
+          </span>
         </ul>
       </div>
     </div>

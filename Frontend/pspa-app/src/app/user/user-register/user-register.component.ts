@@ -69,17 +69,29 @@ export class UserRegisterComponent implements OnInit {
   }
   //--------------------------------
 
+  //need remake after adding API
   onSubmit() {
     console.log(this.registrationFrom.value);
     if (this.registrationFrom.valid) {
       this.userSubmitted = true;
-      /* this.userService.addUser(this.user); */
+
+      this.userService.addUser(this.userData());
       this.registrationFrom.reset();
+
       this.userSubmitted = false;
       this.alertifyService.success('Congrats, you are successfully registered');
     } else {
       this.alertifyService.error('Kindly provide the required fields');
     }
+  }
 
+  //need remake after adding API
+  userData(): User {
+    return (this.user = {
+      userName: this.userName.value,
+      email: this.email.value,
+      password: this.password.value,
+      mobile: this.mobile.value,
+    });
   }
 }
