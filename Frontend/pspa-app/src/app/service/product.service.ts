@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Property } from '../model/property';
-import { Observable } from 'rxjs';
+
+import { Observable, map } from 'rxjs';
+
+import { IProperty } from '../model/interface/iproperty';
+
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +12,13 @@ import { Observable } from 'rxjs';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
-  getAllProperties(ProductType: number): Observable<Property[]> {
+  getAllProperties(): Observable<IProperty[]> {
     return this.http.get('/data/properties.json').pipe(
       map((data: any) => {
-        const propertiesArray: Array<Property> = [];
+        const propertiesArray: Array<IProperty> = [];
 
         for (const id in data) {
-          if (data.hasOwnProperty(id) && data[id].ProductType === ProductType) {
+          if (data.hasOwnProperty(id)) {
             propertiesArray.push(data[id]);
           }
         }

@@ -1,63 +1,51 @@
 [
   {
-    "Id": 1,
-    "ProductType": 1,
-    "Name": "Big Pizza",
-    "Type": "Pizza",
-    "Price": 25,
-    "Image": "prop-1"
+    "id": 1,
+    "name": "Big Pizza",
+    "type": "Pizza",
+    "price": 25,
+    "image": "prop-1"
   },
   {
-    "Id": 2,
-    "ProductType": 1,
-    "Name": "Small Pizza",
-    "Type": "Pizza",
-    "Price": 15,
-    "Image": "prop-2"
+    "id": 2,
+    "productType": 1,
+    "name": "Small Pizza",
+    "type": "Pizza",
+    "price": 15,
+    "image": "prop-2"
   },
   {
-    "Id": 3,
-    "ProductType": 1,
-    "Name": "Medium Pizza",
-    "Type": "Pizza",
-    "Price": 20,
-    "Image": "prop-3"
+    "id": 3,
+    "productType": 1,
+    "name": "Medium Pizza",
+    "type": "Pizza",
+    "price": 20,
+    "image": "prop-3"
   },
   {
-    "Id": 4,
-    "ProductType": 1,
-    "Name": "Mega Pizza",
-    "Type": "Pizza",
-    "Price": 40,
-    "Image": "prop-4"
+    "id": 4,
+    "name": "Mega Pizza",
+    "type": "Pizza",
+    "price": 40,
+    "image": "prop-4"
   },
   {
-    "Id": 5,
-    "ProductType": 1,
-    "Name": "Lemonade",
-    "Type": "Drink",
-    "Price": 20
+    "id": 5,
+    "productType": 1,
+    "name": "Lemonade",
+    "type": "Drink",
+    "price": 20
   },
   {
-    "Id": 6,
-    "ProductType": 2,
-    "Name": "Snapback Merch",
-    "Type": "Clothes",
-    "Price": 15,
-    "Image": "prop-6"
+    "id": 6,
+    "name": "Sprite",
+    "type": "Drink",
+    "price": 10
   },
   {
-    "Id": 7,
-    "ProductType": 1,
-    "Name": "Sprite",
-    "Type": "Drink",
-    "Price": 10
-  },
-  {
-    "Id": 8,
-    "ProductType": 1,
-    "Name": "Coca-cola",
-    "Type": "Drink",
-    "Price": 10
+    "id": 7,
+    "name": "Coca-cola",
+    "type": "Drink",
+    "price": 10
   }
 ]

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { User } from '../model/user';
+import { IUser } from '../model/interface/iuser';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +9,13 @@ export class AuthService {
   constructor() {}
 
   //need remake after adding API
-  authUser(user: User) {
+  authUser(user: IUser) {
     let users = [];
     if (localStorage.getItem('Users')) {
       users = JSON.parse(localStorage.getItem('Users'));
     }
     return users.find(
-      (x: User) => x.userName === user.userName && x.password === user.password
+      (x: IUser) => x.userName === user.userName && x.password === user.password
     );
   }
 }

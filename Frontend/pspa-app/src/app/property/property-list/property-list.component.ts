@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductService } from 'src/app/service/product.service';
-import { Property } from '../../model/property';
+import { IProperty } from '../../model/interface/iproperty';
 
 @Component({
   selector: 'app-property-list',
@@ -10,8 +10,7 @@ import { Property } from '../../model/property';
   styleUrls: ['./property-list.component.css'],
 })
 export class PropertyListComponent implements OnInit {
-  ProductType = 1;
-  properties!: Array<Property>;
+  properties!: Array<IProperty>;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,11 +18,7 @@ export class PropertyListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.route.snapshot.url.toString()) {
-      this.ProductType = 2; //on march-property url
-    }
-
-    this.productService.getAllProperties(this.ProductType).subscribe(
+    this.productService.getAllProperties().subscribe(
       (data) => {
         this.properties = data;
         console.log(data);

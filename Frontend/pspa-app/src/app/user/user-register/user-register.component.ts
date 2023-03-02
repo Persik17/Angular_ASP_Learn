@@ -6,7 +6,8 @@ import {
   FormBuilder,
 } from '@angular/forms';
 
-import { User } from 'src/app/model/user';
+import { IUser } from 'src/app/model/interface/iuser';
+
 import { UserService } from 'src/app/service/user.service';
 import { AlertifyService } from 'src/app/service/alertify.service';
 
@@ -17,7 +18,7 @@ import { AlertifyService } from 'src/app/service/alertify.service';
 })
 export class UserRegisterComponent implements OnInit {
   registrationFrom: FormGroup;
-  user: User;
+  user: IUser;
   userSubmitted: boolean;
 
   constructor(
@@ -86,12 +87,13 @@ export class UserRegisterComponent implements OnInit {
   }
 
   //need remake after adding API
-  userData(): User {
+  userData(): IUser {
     return (this.user = {
       userName: this.userName.value,
       email: this.email.value,
       password: this.password.value,
       mobile: this.mobile.value,
+      isAdmin: false,
     });
   }
 }

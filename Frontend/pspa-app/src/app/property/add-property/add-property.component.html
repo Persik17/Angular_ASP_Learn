@@ -1,43 +1,85 @@
 <div class="card">
-  <div class="card-header">Add New Property</div>
+  <div class="card-header">List your Property</div>
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #Form="ngForm">
-      <div class="form-group col-12">
-        <label for="name">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          #propName="ngModel"
-          ngModel
-          name="Name"
-          required
-          minlength="5"
-        />
-        <span *ngIf="!propName.valid && propName.touched" class="error-block">
-          <span>Please provid name</span>
-          <span>Name must be atleast 5 char long</span>
-        </span>
-      </div>
+      <div>
+        <tabset #formTabs>
+          <tab heading="Basic Info">
+            <div class="form-group col-12">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                #propName="ngModel"
+                ngModel
+                name="Name"
+                required
+                minlength="5"
+              />
+              <span
+                *ngIf="!propName.valid && propName.touched"
+                class="error-block"
+              >
+                <span>Please provid name</span>
+                <span>Name must be atleast 5 char long</span>
+              </span>
+            </div>
 
-      <div class="form-group col-12">
-        <label for="type">Type</label>
-        <input type="text" class="form-control" ngModel name="Type" required />
-      </div>
+            <div class="form-group col-12">
+              <label>Type</label>
+              <input type="text" class="form-control" formControlName="Type" />
+            </div>
 
-      <div class="form-group col-12">
-        <label for="price">Price</label>
-        <input type="text" class="form-control" ngModel name="Price" required />
-      </div>
+            <div class="form-group col-12">
+              <label>Description</label>
+              <textarea
+                type="text"
+                class="form-control"
+                formControlName="Description"
+                rows="6"
+              ></textarea>
+            </div>
 
-      <div class="form-group col-12">
-        <button
-          [disabled]="!Form.valid"
-          type="submit"
-          class="btn btn-primary m-2"
-        >
-          Save
-        </button>
-        <button type="reset" class="btn btn-primary">Cancel</button>
+            <div class="form-group col-12">
+              <label>Price</label>
+              <input type="text" class="form-control" formControlName="Price" />
+            </div>
+
+            <div class="form-group col-12">
+              <button
+                type="button"
+                class="btn btn-primary btn-block m-2"
+                (click)="selectTab(1)"
+              >
+                Next
+              </button>
+            </div>
+          </tab>
+
+          <tab heading="Photos">
+            <div class="form-group col-12">
+              <div class="photo-control">
+                <button class="mt-5" type="button">Upload</button> <br />
+                This is under construction
+              </div>
+            </div>
+            <div class="form-group col-12">
+              <button type="submit" class="btn btn-primary btn-block">
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary btn-block"
+                (click)="selectTab(0)"
+              >
+                Back
+              </button>
+              <button type="reset" class="btn btn-primary btn-block">
+                Cancel
+              </button>
+            </div>
+          </tab>
+        </tabset>
       </div>
     </form>
   </div>

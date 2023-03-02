@@ -7,5 +7,5 @@ This repository was created to study Angular&ASP.NET and related technologies.
 * Angular
 * Bootstrap, CSS
 
-## About This Project
+## About This Project:
 
