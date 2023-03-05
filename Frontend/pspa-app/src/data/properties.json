@@ -1,51 +1,44 @@
 [
   {
     "id": 1,
-    "name": "Big Pizza",
-    "type": "Pizza",
-    "price": 25,
-    "image": "prop-1"
+    "name": "Nike v3",
+    "type": "Boots",
+    "price": 25
   },
   {
     "id": 2,
-    "productType": 1,
-    "name": "Small Pizza",
-    "type": "Pizza",
-    "price": 15,
-    "image": "prop-2"
+    "name": "Nike v4",
+    "type": "Boots",
+    "price": 15
   },
   {
     "id": 3,
-    "productType": 1,
-    "name": "Medium Pizza",
-    "type": "Pizza",
-    "price": 20,
-    "image": "prop-3"
+    "name": "Nike v5",
+    "type": "Boots",
+    "price": 20
   },
   {
     "id": 4,
-    "name": "Mega Pizza",
-    "type": "Pizza",
-    "price": 40,
-    "image": "prop-4"
+    "name": "Nike v6",
+    "type": "Boots",
+    "price": 40
   },
   {
     "id": 5,
-    "productType": 1,
-    "name": "Lemonade",
-    "type": "Drink",
+    "name": "Nike v7",
+    "type": "Boots",
     "price": 20
   },
   {
     "id": 6,
-    "name": "Sprite",
-    "type": "Drink",
+    "name": "Nike v8",
+    "type": "Boots",
     "price": 10
   },
   {
     "id": 7,
-    "name": "Coca-cola",
-    "type": "Drink",
+    "name": "Nike Air",
+    "type": "Boots",
     "price": 10
   }
 ]

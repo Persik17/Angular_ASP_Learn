@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, map } from 'rxjs';
 
-import { IProperty } from '../model/interface/iproperty';
+import { Property } from '../model/property.model';
 
 
 @Injectable({
@@ -12,10 +12,10 @@ import { IProperty } from '../model/interface/iproperty';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
-  getAllProperties(): Observable<IProperty[]> {
+  getAllProperties(): Observable<Property[]> {
     return this.http.get('/data/properties.json').pipe(
       map((data: any) => {
-        const propertiesArray: Array<IProperty> = [];
+        const propertiesArray: Array<Property> = [];
 
         for (const id in data) {
           if (data.hasOwnProperty(id)) {

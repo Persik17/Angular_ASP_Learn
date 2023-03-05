@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 
-import { IUser } from '../model/interface/iuser';
+import { User } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user: IUser;
+  user: User;
 
   constructor() {}
 
   //need remake after adding API
-  addUser(userReg: IUser) {
+  addUser(userReg: User) {
     let users = [];
     if (localStorage.getItem('Users')) {
       users = JSON.parse(localStorage.getItem('Users'));

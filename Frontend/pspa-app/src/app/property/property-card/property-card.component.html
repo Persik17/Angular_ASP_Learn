@@ -1,16 +1,16 @@
 <div class="card">
-  <div class="card-img-wrapper">
+  <div class="card-img-wrapper m-2">
     <img
-      *ngIf="property.image"
+      *ngIf="property.photo"
       calss="card-img-top"
-      src="./assets/images/{{ property.image }}.jpg"
+      src="./assets/images/{{ property.photo }}.jpg"
     />
     <img
-      *ngIf="!property.image"
+      *ngIf="!property.photo"
       calss="card-img-top"
-      src="./assets/images/pizza-template.jpg"
+      src="./assets/images/template.jpg"
     />
-    <ul class="list-inline text-center member-icons animate">
+    <ul *ngIf="!hideIcons" class="list-inline text-center member-icons animate">
       <li class="list-inline-item">
         <button
           class="btn btn-primary"
@@ -21,7 +21,7 @@
       </li>
       <li class="list-inline-item">
         <button class="btn btn-primary">
-          <i class="fa-solid fa-pizza-slice"></i>
+          <i class="fa-solid fa-shirt"></i>
         </button>
       </li>
     </ul>

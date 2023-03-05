@@ -1,86 +1,239 @@
-<div class="card">
-  <div class="card-header">List your Property</div>
-  <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #Form="ngForm">
-      <div>
-        <tabset #formTabs>
-          <tab heading="Basic Info">
-            <div class="form-group col-12">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                #propName="ngModel"
-                ngModel
-                name="Name"
-                required
-                minlength="5"
-              />
-              <span
-                *ngIf="!propName.valid && propName.touched"
-                class="error-block"
-              >
-                <span>Please provid name</span>
-                <span>Name must be atleast 5 char long</span>
-              </span>
-            </div>
-
-            <div class="form-group col-12">
-              <label>Type</label>
-              <input type="text" class="form-control" formControlName="Type" />
-            </div>
-
-            <div class="form-group col-12">
-              <label>Description</label>
-              <textarea
-                type="text"
-                class="form-control"
-                formControlName="Description"
-                rows="6"
-              ></textarea>
-            </div>
-
-            <div class="form-group col-12">
-              <label>Price</label>
-              <input type="text" class="form-control" formControlName="Price" />
-            </div>
-
-            <div class="form-group col-12">
-              <button
-                type="button"
-                class="btn btn-primary btn-block m-2"
-                (click)="selectTab(1)"
-              >
-                Next
-              </button>
-            </div>
-          </tab>
-
-          <tab heading="Photos">
-            <div class="form-group col-12">
-              <div class="photo-control">
-                <button class="mt-5" type="button">Upload</button> <br />
-                This is under construction
-              </div>
-            </div>
-            <div class="form-group col-12">
-              <button type="submit" class="btn btn-primary btn-block">
-                Save
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary btn-block"
-                (click)="selectTab(0)"
-              >
-                Back
-              </button>
-              <button type="reset" class="btn btn-primary btn-block">
-                Cancel
-              </button>
-            </div>
-          </tab>
-        </tabset>
+<div class="row mb-5">
+  <div class="col-8 shadow-lg p-0 bg-white">
+    <div class="card">
+      <div class="card-header">
+        <h3>List your Property</h3>
       </div>
-    </form>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="addPropertyForm">
+          <div class="tab-panel">
+            <tabset class="member-tabset" #formTabs>
+              <tab heading="Basic Info">
+                <div class="form-group col-12 m-2">
+                  <label>Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Name"
+                    #name
+                    (keyup)="propertyView.name = name.value"
+                  />
+                </div>
+                <div class="form-group col-12 m-2">
+                  <label>Description</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    formControlName="Description"
+                    rows="6"
+                    #descripton
+                  ></textarea>
+                </div>
+                <div class="form-group col-12 m-2">
+                  <p>Type</p>
+                  <div class="btn-group" btnRadioGroup formControlName="PType">
+                    <label
+                      *ngFor="let ptype of propertyTypes"
+                      class="btn btn-outline-primary m-1"
+                      [btnRadio]="ptype"
+                      tabindex="0"
+                      role="button"
+                      name="PropType"
+                      >{{ ptype }}
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block m-2"
+                    (click)="selectTab(1, BasicInfo.valid)"
+                  >
+                    Next
+                  </button>
+                </div>
+              </tab>
+
+              <tab heading="Pricing">
+                <div class="form-group col-12 m-2">
+                  <label>Price</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Price"
+                    #price
+                  />
+                </div>
+
+                <div class="form-group col-12 m-2">
+                  <label>Wholesale price</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="WholesalePrice"
+                    #wholesalePrice
+                  />
+                </div>
+
+                <div class="form-group col-12 m-2">
+                  <P>Max Discount</P>
+                  <div
+                    class="btn-group"
+                    btnRadioGroup
+                    formControlName="MaxDiscount"
+                  >
+                    <label
+                      *ngFor="let disc of discounts"
+                      class="btn btn-outline-primary m-1"
+                      [btnRadio]="disc"
+                      tabindex="0"
+                      role="button"
+                      name="MaxDisc"
+                      >{{ disc }}%
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group col-12 m-2">
+                  <p>Employee Discount</p>
+                  <div
+                    class="btn-group"
+                    btnRadioGroup
+                    formControlName="EmployeeDiscount"
+                  >
+                    <label
+                      class="btn btn-outline-primary m-1"
+                      btnRadio="1"
+                      tabindex="0"
+                      role="button"
+                      name="EmployeeDiscount"
+                      >Yes</label
+                    >
+                    <label
+                      class="btn btn-outline-primary m-1"
+                      btnRadio="2"
+                      tabindex="0"
+                      role="button"
+                      name="EmployeeDiscount"
+                      >No</label
+                    >
+                  </div>
+                </div>
+
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block m-2"
+                    (click)="selectTab(0, PriceInfo.valid)"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(2, PriceInfo.valid)"
+                  >
+                    Next
+                  </button>
+                </div>
+              </tab>
+
+              <tab heading="Other Details">
+                <div class="form-group col-12 m-2">
+                  <label>Country</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Country"
+                    #country
+                  />
+                </div>
+
+                <div class="form-group col-12 m-2">
+                  <label>Size</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Country"
+                    #country
+                  />
+                </div>
+
+                <div class="form-group col-12 m-2">
+                  <label>Material</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Country"
+                    #country
+                  />
+                </div>
+
+                <div class="form-group col-12 m-2">
+                  <label>Main Color</label>
+                  <div>
+                    <ngx-colors
+                      ngx-colors-trigger
+                      style="display: inline-block; margin: 5px"
+                    >
+                    </ngx-colors>
+                  </div>
+                </div>
+
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block m-2"
+                    (click)="selectTab(2, OtherInfo.valid)"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(4, OtherInfo.valid)"
+                  >
+                    Next
+                  </button>
+                </div>
+              </tab>
+
+              <tab heading="Photos">
+                <div class="form-group col-12">
+                  <div class="photo-control">
+                    <button class="mt-5" type="button">Upload</button> <br />
+                    This is under construction
+                  </div>
+                </div>
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block m-2"
+                    (click)="selectTab(3, true)"
+                  >
+                    Back
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Save
+                  </button>
+                  <button type="reset" class="btn btn-primary btn-block m-2">
+                    Cancel
+                  </button>
+                </div>
+              </tab>
+            </tabset>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card-header">
+      <h3>Your Property Preview</h3>
+    </div>
+    <div class="shadow-lg p-3 bg-white">
+      <app-property-card [property]="propertyView"></app-property-card>
+    </div>
   </div>
 </div>
